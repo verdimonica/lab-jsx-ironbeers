@@ -311,11 +311,33 @@ As we can see, we have 4 in common properties, which means our code could be a b
 
 You should create a smaller component and use it to show each beer.
 
-- First, let's go over where our component files should be located. We recommend that you store this smaller components inside a separate folder.
+- You should store this smaller components inside a separate folder.
+Therefore, create a new folder called `components` inside of the `views` folder.
+Then create the `BeerCard.jsx` file inside the `components` folder.
 
-- You should create a `components` folder inside the `views` folder, and `BeerCard.jsx` file inside the `components` folder.
+- We should create our `BeerCard.jsx` so that it displays the properties: **image**, **name**, **description**, **tagline**, **food pairing** and **brewers tips**  of the beer.
+You can reuse the code that you wrote when creating the `RandomBeer.jsx` view.
 
-- Our `BeerCard.jsx` should always display the properties that both views share: **image**, **name**, **description**, and **tagline** of the beer.
+```jsx
+<div>
+  <img src={props.oneBeer.image_url} width="200" alt="" />
+  <div>
+    <h3>{props.oneBeer.name}</h3>  
+    <h5>{props.oneBeer.tagline}</h5>  
+    <p>{props.oneBeer.description}</p>  
+          
+    <h4>Food Pairing</h4>  
+    <ul>
+      { props.oneBeer.food_pairing.map( ( food, i) => {
+        return <li key={i}> {food} </li>
+      })}
+    </ul>
+
+    <p><strong>Brewers Tips:</strong> {props.oneBeer.brewers_tips} </p>
+
+  </div>
+</div>
+```
 
 <br>
 
@@ -332,7 +354,7 @@ You should create a smaller component and use it to show each beer.
       <Layout>
         <BeerCard beer={props.oneBeer} />
 
-        {/* `props.oneBeer` is the data coming from the res.render('RandomBeer') */}
+        {/* `props.oneBeer` is the data coming from the res.render('RandomBeer', data) */}
       </Layout>
     );
   }
