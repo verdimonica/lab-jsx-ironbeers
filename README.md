@@ -316,7 +316,9 @@ Therefore, create a new folder called `components` inside of the `views` folder.
 Then create the `BeerCard.jsx` file inside the `components` folder.
 
 - We should create our `BeerCard.jsx` so that it displays the properties: **image**, **name**, **description**, **tagline**, **food pairing** and **brewers tips**  of the beer.
-You can reuse the code that you wrote when creating the `RandomBeer.jsx` view.
+<br>
+
+You can reuse the code that you wrote in the `RandomBeer.jsx` view:
 
 ```jsx
 <div>
@@ -328,8 +330,8 @@ You can reuse the code that you wrote when creating the `RandomBeer.jsx` view.
           
     <h4>Food Pairing</h4>  
     <ul>
-      { props.oneBeer.food_pairing.map( ( food, i) => {
-        return <li key={i}> {food} </li>
+      { props.oneBeer.food_pairing.map( (food, i) => {
+        return ( <li key={i}> {food} </li> );
       })}
     </ul>
 
@@ -374,7 +376,7 @@ You can reuse the code that you wrote when creating the `RandomBeer.jsx` view.
 
 ```jsx
 {
-  props.beersFromApi.map(beerObj => {
+  props.beersFromApi.map( (beerObj) => {
     return <BeerCard beer={beerObj} hideDetails={true} />;
   });
 }
@@ -382,13 +384,15 @@ You can reuse the code that you wrote when creating the `RandomBeer.jsx` view.
 
 After this you should implement a conditional using a [ternary operator](https://flaviocopes.com/javascript-ternary-operator/), to hide the additional details when `props.hideDetails` is `true`. You can use the below example as a guide on how to do it:
 
+<br>
+
 ##### `BeerCard.jsx`
 
 ```jsx
 {
-  props.hideDetails ? null : (
-    <div> {/*  Food Pairing and Brewers Tips go here */} </div>
-  );
+  props.hideDetails 
+    ? null 
+    : (<div> {/*  Food Pairing and Brewers Tips go here */} </div>);
 }
 ```
 
