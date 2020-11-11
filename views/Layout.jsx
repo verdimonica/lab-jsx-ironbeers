@@ -17,7 +17,7 @@ function Layout(props) {
         </nav>
         {/* This is the only page that will have full html setup */}
 
-        { props.children }
+        {props.children}
 
       </body>
     </html>

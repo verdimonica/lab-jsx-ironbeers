@@ -26,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/verdimonica/lab-jsx-ironbeers/issues"
   },
-  "homepage": "https://github.com/verdimonica/lab-jsx-ironbeers#readme"
+  "homepage": "https://github.com/verdimonica/lab-jsx-ironbeers#readme",
+  "keywords": []
 }
