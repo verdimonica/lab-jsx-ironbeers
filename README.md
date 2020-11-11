@@ -111,7 +111,9 @@ Layout done, let's move to creating these three pages.
 
   ```jsx
   function Home() {
-    return <Layout>{/* HTML goes here */}</Layout>;
+    return (
+      <Layout>{/* HTML goes here */}</Layout>
+    );
   }
   ```
 
