@@ -8,11 +8,16 @@ function Home() {
       <main>
         <h1>Home</h1>
         <div>
-        <img src="./../public/images/beer.png" alt=""/>
+          <img src="../public/images/beer.png" alt="Beer-pic"/>
+        <div>
+          <a href="/beers">Check the Beers!</a>
+        </div>
+        <div>
+          <a href="/random-beers">Check a Random Beer</a>
+        </div>
         </div>
       </main>
     </Layout>
-
   );
   
 }
