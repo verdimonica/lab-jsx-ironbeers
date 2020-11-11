@@ -75,17 +75,21 @@ The `Layout` component should have the HTML structure show in the next example. 
     {/* This is the only page that will have full html setup */}
 
     {/* 
-        	Here you should add { props.children }
-        	to enable showing other components/views 
-        	withing the Layout
-        */}
+        Here you should add { props.children }
+        to enable showing other components/views 
+        withing the Layout
+    */}
   </body>
 </html>
 ```
 
-Following the comments in the above code you should add the `{ props.children }` in the body in order to enable showing of the other components/vies inside of the `Layout`.
+Following the comments in the above code you should add the `{ props.children }` in the body after the `<nav></nav>` which will enable displaying of the views inside of the `Layout`.
 
-Remember to pass the `props` argument to the `Layout` (`function Layout( props) {}`) .
+Remember to pass the `props` argument to the `Layout` :
+
+```jsx
+function Layout(props) {}
+```
 
 The navbar includes 3 anchor links with empty `href` attributes.
 
