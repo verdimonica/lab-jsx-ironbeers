@@ -49,6 +49,9 @@ $ node app.js
 # you can also run: npm run start:dev
 ```
 
+<br>
+
+
 ### Iteration 1: Layout barebones
 
 Our starter code includes the basic configuration needed to run our app. The **`/`** route is set to render the `Home.jsx` view. Let's start by creating a `Layout` component.
@@ -91,6 +94,9 @@ Remember to pass the `props` argument to the `Layout` :
 function Layout(props) {}
 ```
 
+<br>
+
+
 The navbar includes 3 anchor links with empty `href` attributes.
 
 Make sure to edit the `href` of each anchor in the following way:
@@ -102,6 +108,9 @@ Make sure to edit the `href` of each anchor in the following way:
 - **_Random Beer_** ==> should navigate to `/random-beers`.
 
 Layout done, let's move to creating these three pages.
+
+<br>
+
 
 ### Iteration 2 - Home _view_
 
@@ -130,6 +139,9 @@ Layout done, let's move to creating these three pages.
 
 ![image](https://user-images.githubusercontent.com/23629340/36723774-7d791ef2-1bb1-11e8-991b-39dbf4fd8a59.png)
 
+<br>
+
+
 ### Iteration 3 - Beers _view_
 
 The next thing we will be working on is a view where we can present all the beers we will retrieve from the punkApi. This view will be rendered every time the user visits the the `/beers` route.
@@ -139,6 +151,9 @@ This leads us to the conclusion that in this step, we have the two main focus ar
 - the `/beers` route and
 
 - the `Beers.jsx` view.
+
+<br>
+
 
 #### Iteration 3.1 The `/beers` route
 
@@ -154,7 +169,7 @@ In this step, we will have a couple of micro-steps:
 
 - You should pass that array to the `Beers` view in the `res.render` and then use it inside of `Beers.jsx`.
 
-We will give you a hand during the first time. You should do it in the follwing way:
+We will give you a hand during the first time. You should do it in the following way:
 
 ```js
 punkAPI
@@ -165,7 +180,7 @@ punkAPI
     // Prepare the object to be passed/injected to `Beers` view
     const data = { beersFromApi: beersFromApi };
 
-    // Render the `Beers` view and pass/inject to it the object with `beersFromApi`
+    // Render the `Beers` view and pass/inject to it the object containing the `beersFromApi`
     res.render('Beers', data);
   })
   .catch(error => console.log(error));
@@ -173,7 +188,7 @@ punkAPI
 
 The `data` object passed to the `res.render` will be available inside of the `Beers.jsx` view as the `props` argument.
 
-
+<br>
 
 #### 3.2 The `Beers.jsx` view
 
@@ -222,9 +237,14 @@ Now, when you click on the `Beers` link on the top navigation or on the `Check t
 
 - Remember to wrap all the content that `Beers` view is displaying in a `<Layout></Layout>` component.
 
+<br>
+
 ### Iteration 4 - Random beer _view_
 
 As in the previous step, we will have to focus on creating a route to display a random beer. When a random beer is retrieved, we have to pass it to the view.
+
+<br>
+
 
 #### 4.1 The `/random-beer` route
 
@@ -247,6 +267,9 @@ punkAPI
 
 - Eventually, the received beer needs to be passed to the `RandomBeer.jsx` view. You still don't have this file, so let's proceed to create it.
 
+<br>
+
+
 #### 4.2 The `RandomBeer.jsx` view
 
 - The `RandomBeer.jsx` should display the random beer that was retrieved from the database.
@@ -260,6 +283,9 @@ Now, every time the user clicks on the _Random beer_ link in the navbar or on th
 **You've just finished all the mandatory iterations. Good job!**
 
 Let's proceed to the bonus iterations.
+
+<br>
+
 
 ### Bonus: Iteration 5 - BeerCard component
 
@@ -278,6 +304,9 @@ Let's see what beer properties we display on the `/beers` _(the beers page)_ and
 
 As we can see, we have 4 in common properties, which means our code could be a bit more **DRY** if we refactor it using _partials_.
 
+<br>
+
+
 #### 5.1 Create the `BeerCard` component
 
 You should create a smaller component and use it to show each beer.
@@ -287,6 +316,9 @@ You should create a smaller component and use it to show each beer.
 - You should create a `components` folder inside the `views` folder, and `BeerCard.jsx` file inside the `components` folder.
 
 - Our `BeerCard.jsx` should always display the properties that both views share: **image**, **name**, **description**, and **tagline** of the beer.
+
+<br>
+
 
 #### 5.2 Display the `BeerCard` in the `RandomBeer` view
 
@@ -307,6 +339,9 @@ You should create a smaller component and use it to show each beer.
   ```
 
 - Remember to `require` the `BeerCard` component in the `RandomBeer.jsx` file.
+
+<br>
+
 
 #### 5.3 Display the `BeerCard` in the `Beers` view
 
@@ -343,6 +378,9 @@ After this you should implement a conditional using a [ternary operator](https:/
 
 Our code shrunk by a lot just because we managed to create a reusable piece of code (the component).
 
+<br>
+
+
 ### Bonus: Iteration 6
 
 Make all the beers on the `/beers` page clickable. If users click on a specific beer, they should be able to see a page with the detailed information of that particular beer.
@@ -361,6 +399,9 @@ To find out how you can get an individual beer from the punkAPI using the _beerI
 
 This new route shoud render a view displaying the specific beer got using the [`.getBeer( id )` punkAPI method](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeerid).
 
+<br>
+
+
 ### Bonus: Iteration 7
 
 The overall layout should look like this:
@@ -372,3 +413,6 @@ You will find the `colors` and `fonts` on the `css` file. Remember to link the `
 Let your artsy side shine! :sparkles:
 
 Happy Coding! 💙
+
+<br>
+
