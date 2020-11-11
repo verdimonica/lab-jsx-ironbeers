@@ -162,8 +162,10 @@ punkAPI
   .then(beersFromApi => {
     console.log('All the Beers from the API: ', beersFromApi);
     
+    // Prepare the object to be passed/injected to `Beers` view
     const data = { beersFromApi: beersFromApi };
 
+    // Render the `Beers` view and pass/inject to it the object with `beersFromApi`
     res.render('Beers', data);
   })
   .catch(error => console.log(error));
