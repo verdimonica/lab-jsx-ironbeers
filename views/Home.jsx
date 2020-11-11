@@ -1,11 +1,18 @@
 const React = require('react');
+const Layout = require('./Layout');
 
 function Home() {
 
   return (
-    <main>
-      <h1>Home</h1>
-    </main>
+    <Layout>
+      <main>
+        <h1>Home</h1>
+        <div>
+        <img src="./../public/images/beer.png" alt=""/>
+        </div>
+      </main>
+    </Layout>
+
   );
   
 }
