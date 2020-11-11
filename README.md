@@ -119,7 +119,7 @@ Layout done, let's move to creating these three pages.
 
   Remember to `require` the Layout component in the `Home.jsx`.
 
-- `Home` view should include the _beer image_, which you can find at `/public/images`.
+- `Home` view should include the `beer.png` _image_, which you can find at `/public/images`.
 
 - Together with the image, `Home.jsx` should have two links:
 
@@ -148,9 +148,11 @@ In this step, we will have a couple of micro-steps:
 
 - Inside the `/beers` route, call the `getBeers()` method (the **PunkAPI** provides this method, and you can find more about it [here](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeersoptions)).
 
-  **Calling the `.getBeers()` makes a request to the punkAPI (similar to using `fetch()`). This will return a Promise with the response from the API that should be resolved with an array of 25 beers.**
+  **Calling the `.getBeers()` makes a request to the punkAPI (similar to using `fetch()`).**
 
-- You should pass that array to the `Beers` view in the `res.render` and then use it inside of `Beers.jsx` as `props`.
+  **This will return a Promise with the response from the API that should be resolved with an array of 25 beers.**
+
+- You should pass that array to the `Beers` view in the `res.render` and then use it inside of `Beers.jsx`.
 
 The example of how this method works is shown below:
 
@@ -169,7 +171,8 @@ punkAPI
 
 - Create a `Beers.jsx` file to render every time we call this route.
 - This file should have access to the beers we get as a response from the database. Remember, you should call the `render` method after getting the _beers_ array. _Hint:_ That means inside of the function you're passing to the `then` method. :wink:
-- In the `Beers.jsx` view, loop over the **array of beers** coming via the `props` argument using an `.map` loop. Display an **image**, **name**, **description** and **tagline**.
+- In the `Beers.jsx` view, using `.map` loop over the **array of beers** coming via the `props` argument. 
+Display an **image**, **name**, **description** and **tagline**.
 
 Now, when you click on the `Beers` link on the top navigation or on the `Check the beers` button, you should be able to see all the beers. Boom! :boom:
 
