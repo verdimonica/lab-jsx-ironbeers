@@ -154,25 +154,44 @@ In this step, we will have a couple of micro-steps:
 
 - You should pass that array to the `Beers` view in the `res.render` and then use it inside of `Beers.jsx`.
 
-The example of how this method works is shown below:
+We will give you a hand during the first time. You should do it in the follwing way:
 
 ```js
 punkAPI
   .getBeers()
   .then(beersFromApi => {
     console.log('All the Beers from the API: ', beersFromApi);
-    console.log('One Beer: ', beersFromApi[0]);
-    // `render`  the Beers here and pass it the beers array
+    
+    const data = { beersFromApi: beersFromApi };
+
+    res.render('Beers', data);
   })
   .catch(error => console.log(error));
 ```
 
+The `data` object passed to the `res.render` will be available inside of the `Beers.jsx` view as the `props` argument.
+
+
+
 #### 3.2 The `Beers.jsx` view
 
 - Create a `Beers.jsx` file to render every time we call this route.
-- This file should have access to the beers we get as a response from the database. Remember, you should call the `render` method after getting the _beers_ array. _Hint:_ That means inside of the function you're passing to the `then` method. :wink:
+- This file should have access to the beers we get as a response from the database. Remember, you should have called the `res.render` method after getting the _beers_ array. _Hint:_ That means inside of the function you're passing to the `then` method. :wink:
 - In the `Beers.jsx` view, using `.map` loop over the **array of beers** coming via the `props` argument. 
 Display an **image**, **name**, **description** and **tagline**.
+
+
+```jsx
+const React = require('react');
+const Layout = require('./Layout');
+
+
+function Beers ( props ) {
+  return()
+}
+
+module.exports = Beers;
+```
 
 Now, when you click on the `Beers` link on the top navigation or on the `Check the beers` button, you should be able to see all the beers. Boom! :boom:
 
