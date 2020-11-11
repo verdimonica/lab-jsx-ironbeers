@@ -372,6 +372,8 @@ You can reuse the code that you wrote in the `RandomBeer.jsx` view:
 - You should go ahead and use the `<BeerCard />` component inside the `map` of the `Beers.jsx` .
 - The `<BeerCard />` used in the `Beers.jsx` **should not display** the **food pairing** nor **brewers tips**. You can pass an additional boolean value prop to the `<BeerCard />` and use it to hide the **food pairing** and **brewers tips**, when rendering it in the `Beers.jsx` view, like so:
 
+<br>
+
 ##### `Beers.jsx`
 
 ```jsx
