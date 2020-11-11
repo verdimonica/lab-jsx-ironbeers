@@ -13,7 +13,7 @@ function Layout(props) {
         <nav>
           <a href="/"> Home </a>
           <a href="/beers"> Beers </a>
-          <a href="/random-beers"> Random Beer </a>
+          <a href="/random-beer"> Random Beer </a>
         </nav>
         {/* This is the only page that will have full html setup */}
 

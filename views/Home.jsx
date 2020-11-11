@@ -13,7 +13,7 @@ function Home() {
           <a href="/beers">Check the Beers!</a>
         </div>
         <div>
-          <a href="/random-beers">Check a Random Beer</a>
+          <a href="/random-beer">Check a Random Beer</a>
         </div>
         </div>
       </main>
