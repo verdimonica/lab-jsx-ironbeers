@@ -22,11 +22,12 @@ app.get('/', (req, res) => {
 app.get("/beers", (req, res,) => {
   punkAPI.getBeers()
   .then(beersFromApi => {
-    console.log('All the Beers from the API: ', beersFromApi);
+ 
 
     const data = {beersFromApi: beersFromApi};
 
     res.render('Beers', data);
+   
   })
 })
 
