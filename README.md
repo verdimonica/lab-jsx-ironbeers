@@ -114,7 +114,8 @@ Layout done, let's move to creating these three pages.
 
 ### Iteration 2 - Home _view_
 
-- The first view should be **Home** and should be rendered on **`/`** route. The file that gets rendered is `Home.jsx`.
+- The first view should be **Home** and should be rendered on **`/`** route. The route is already created in the `app.js` file, you can head there to check it out. The file that gets rendered is `Home.jsx`.
+
 
 - The HTML of the `Home.jsx` view should be wrapped in the `<Layout></Layout>` component, like so:
 
@@ -197,6 +198,7 @@ The `data` object passed to the `res.render` will be available inside of the `Be
 - In the `Beers.jsx` view, using `.map` loop over the **array of beers** coming via the `props` argument. 
 Display an **image**, **name**, **description** and **tagline**.
 
+<br>
 
 ```jsx
 const React = require('react');
