@@ -302,7 +302,7 @@ Let's see what beer properties we display on the `/beers` _(the beers page)_ and
 |   food pairing   |        :x:         | :white_check_mark: |
 |   brewer tips    |        :x:         | :white_check_mark: |
 
-As we can see, we have 4 in common properties, which means our code could be a bit more **DRY** if we refactor it using _partials_.
+As we can see, we have 4 in common properties, which means our code could be a bit more **DRY** if we refactor it using _components_.
 
 <br>
 
