@@ -4,15 +4,15 @@
 
 ## Introduction
 
-Sometimes you would just like to have a very descriptive list of all beers so you could see their type, color, each beer's percentage of alcohol, or which beer is well pared with some food. In this lab, you will create a web app where the user will be able to see a list of beers, get random suggestions, and read a very descriptive explanation of each beer.
+Sometimes you would just like to have a very descriptive list of all beers so you could see their type, color, each beer's percentage of alcohol, or which beer is well paired with some food. In this LAB, you will create a web app where the user will be able to see a list of beers, get random suggestions, and read a very descriptive explanation of each beer.
 
 "How will we get all of this information?", you might ask. Well, we will be using an npm package :package: as our data source.
 
-For this exercise, we will work with the **[PunkAPI](https://www.npmjs.com/package/punkapi-javascript-wrapper)** npm package. In the background, the package communicates with an API (server and the database) that contains all of the beers. The package enables us to use it's methods that can help us to retrieve beers. Each beer has some properties, and we can play around with this data to practice working with JSX templates, `Layout` and components.
+For this exercise, we will work with the **[PunkAPI](https://www.npmjs.com/package/punkapi-javascript-wrapper)** npm package. In the background, the package communicates with an API (server and the database) that contains all of the beers. The package enables us to use it's methods to retrieve beers. Each beer has some properties, and we can play around with this data to practice working with JSX templates and components.
 
 **In this lab, we can also practice reading external (PunkAPI) docs and learn how to get what we need from an API.**
 
-## Requirements
+## Getting Started
 
 - Fork this repo
 - Then clone this repo.
@@ -27,21 +27,23 @@ $ git commit -m "Finished implementing all iterations"
 $ git push origin master
 ```
 
-- Create Pull Request so your TAs can check up your work.
+- Create Pull Request so that your TAs can check up your work.
 
 ## Instructions
 
 ### Iteration 0: Initial setup
 
-To run our application, the first thing you have to do is to install all of its dependencies. Run the following command:
+Before running the application, the first thing you have to do is to install all of its dependencies.
 
-```shell
+Run the following command to install all dependencies listed in `package.json`:
+
+```bash
 $ npm install
 ```
 
 To run the app:
 
-```shell
+```bash
 $ node app.js
 
 # you can also run: npm run start:dev
