@@ -447,7 +447,20 @@ The overall layout should look like this:
 
 ![image](https://user-images.githubusercontent.com/23629340/36723450-8bbcb164-1bb0-11e8-81c3-4fe939730bb9.png)
 
-You will find the `colors` and `fonts` on the `css` file. Remember to link the `css` file to your **main layout**.
+You will find the `colors` and `fonts` on the `css` file. Remember to link the `css` file to your **main layout**:
+
+<br>
+
+##### `Layout.jsx`
+```jsx
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+        <title>JSX Ironbeers</title>
+        <link rel="stylesheet" href="/stylesheets/styles.css"/>
+      </head>
+```
 
 Let your artsy side shine! :sparkles:
 
