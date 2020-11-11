@@ -8,9 +8,11 @@ Sometimes you would just like to have a very descriptive list of all beers so yo
 
 "How will we get all of this information?", you might ask. Well, we will be using an npm package :package: as our data source.
 
-For this exercise, we will work with the **[PunkAPI](https://www.npmjs.com/package/punkapi-javascript-wrapper)** npm package. In the background, the package communicates with a remote _database_ that contains all of the beers. The package enables us to use its methods that can help us to retrieve beers. Each beer has some properties, and we can play around with this data to practice working with Handlebars templates, `layouts` and `partials`.
+For this exercise, we will work with the **[PunkAPI](https://www.npmjs.com/package/punkapi-javascript-wrapper)** npm package. In the background, the package communicates with an API (server and the database) that contains all of the beers. The package enables us to use it's methods that can help us to retrieve beers. Each beer has some properties, and we can play around with this data to practice working with JSX templates, `Layout` and components.
 
-**In this lab, we can also practice reading external (PunkAPI) docs and learn how to get what we need from the database.**
+
+
+**In this lab, we can also practice reading external (PunkAPI) docs and learn how to get what we need from an API.**
 
 ## Requirements
 
@@ -23,7 +25,7 @@ For this exercise, we will work with the **[PunkAPI](https://www.npmjs.com/packa
 
 ```shell
 $ git add .
-$ git commit -m "done"
+$ git commit -m "Finished implementing all iterations"
 $ git push origin master
 ```
 
@@ -44,31 +46,103 @@ To run the app:
 ```shell
 $ node app.js
 
-# you can also run: npm start
+# you can also run: npm run start:dev
 ```
+
+
 
 ### Iteration 1: Layout barebones
 
-Our starter code includes the basic configuration needed to run our app. The **`/`** route is set to render the `index.hbs` file. Let's start by creating a layout.
+Our starter code includes the basic configuration needed to run our app. The **`/`** route is set to render the `Home.jsx` view. Let's start by creating a `Layout` component.
 
-Inside of the `views` folder, create a `layout.hbs` file. In the bonus iteration, you can give your app some style, but for now, let's focus on the logic.
+Inside of the `views` folder, create a `Layout.jsx` file. In the bonus iteration, you can give your app some style, but for now, let's focus on the logic.
 
-Remember to add the `{{{ body }}}` to the **main layout**.
+The `Layout` component should have the HTML structure show in the next example. You can copy past the below structure and edit the part following the comments in the below code:
 
-Add a navbar that includes links to 3 pages:
+```jsx
+    <html lang="en">
 
-- _Home_ ==> should navigate to `/`.
-- _Beers_ ==> should navigate to `/beers`.
-- _Random Beer_ ==> should navigate to `/random-beers`.
+  		<head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>JSX Ironbeers</title>
+      </head>
+  
+      <body>
+        <nav>
+          <a href=""> Home </a>
+          <a href=""> Beers </a>
+          <a href=""> Random Beer </a>
+        </nav>
+        {/* This is the only page that will have full html setup */}
+        
+        {/* 
+        	Here you should add { props.children }
+        	to enable showing other components/views 
+        	withing the Layout
+        */}
+      </body>
+  
+    </html>
+```
+
+
+
+Following the comments in the above code you should add the `{ props.children }` in the body in order to enable showing of the other components/vies inside of the `Layout`.
+
+Remember to pass the `props` argument to the `Layout` (`function Layout( props) {}`)  .
+
+
+
+The navbar includes 3 anchor links with empty `href` attributes. 
+
+Make sure to edit the `href` of each anchor in the following way:
+
+- **_Home_** ==> should navigate to `/`.
+
+- **_Beers_** ==> should navigate to `/beers`.
+
+- **_Random Beer_** ==> should navigate to `/random-beers`.
+
+  
 
 Layout done, let's move to creating these three pages.
 
+
+
 ### Iteration 2 - Home _page_
 
-- The first page should be **Home** and should be rendered on **`/`**. The file that gets rendered is `index.hbs`.
-- This file should include the _beer image_, which you can find at `/public/images`. Together with the image, `index.hbs` should have two links: `Check the Beers!` and `Check a Random Beer`. Both links should navigate to the corresponding routes (which we previously defined in our navbar as well). Later, you can style these `a` tags to make them look like buttons.
+- The first page should be **Home** and should be rendered on **`/`** route. The file that gets rendered is `Home.jsx`.
+
+- The HTML of the `Home.jsx` view should be wrapped in the `<Layout></Layout>` component, like so:
+
+  ```jsx
+  function Home() {
+    return(
+    	<Layout>
+       {/* HTML goes here */}
+      </Layout>
+    )
+  }
+  ```
+
+  Remember to `require` the Layout component in the `Home.jsx`.
+
+  
+
+- `Home` view should include the _beer image_, which you can find at `/public/images`. 
+
+- Together with the image, `Home.jsx` should have two links:
+
+  -  `Check the Beers!` and
+  -  `Check a Random Beer`. 
+
+  Both links should navigate to the corresponding routes (which we previously defined in our navbar as well). Later, you can style these `a` tags to make them look like buttons.
 
 ![image](https://user-images.githubusercontent.com/23629340/36723774-7d791ef2-1bb1-11e8-991b-39dbf4fd8a59.png)
+
+
 
 ### Iteration 3 - Beers _page_
 
@@ -77,32 +151,49 @@ The next thing we will be working on is a page where we can present all the beer
 This leads us to the conclusion that in this step, we have the two main focus areas:
 
 - the `/beers` route and
-- the `beers.hbs` view.
+
+- the `Beers.jsx` view.
+
+  
 
 #### Iteration 3.1 The `/beers` route
 
 In this step, we will have a couple of micro-steps:
 
 - Create a `/beers` route inside the `app.js` file.
-- Inside the `/beers` route, call the `getBeers()` method (the **PunkAPI** provides this method, and you can find more about it [here](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeersoptions)). **Calling the `.getBeers()` method returns a promise that should be resolved with an array of 25 beers**.
-- Down the road, you should pass that array to the `beers.hbs` view.
+
+- Inside the `/beers` route, call the `getBeers()` method (the **PunkAPI** provides this method, and you can find more about it [here](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeersoptions)).
+
+   **Calling the `.getBeers()` method creates a GET request to the beers API (similar to using `fetch()`). This will return a Promise  with the response from the API that should be resolved with an array of 25 beers.**
+
+- You should pass that array to the `Beers` view in the `res.render` and then use it inside of `Beers.jsx` as `props`.
 
 The example of how this method works is shown below:
 
 ```js
 punkAPI
   .getBeers()
-  .then(beersFromApi => console.log('Beers from the database: ', beersFromApi))
-  .catch(error => console.log(error));
+  .then( (beersFromApi) => {
+      console.log('All the Beers from the API: ', beersFromApi);
+      console.log('One Beer: ', beersFromApi[0] );
+  		// `render`  the Beers here and pass it the beers array
+  })
+  .catch( (error) => console.log(error) );
 ```
 
-#### 3.2 The `beers.hbs` view
 
-- Create a `beers.hbs` file to render every time we call this route.
+
+#### 3.2 The `Beers.jsx` view
+
+- Create a `Beers.jsx` file to render every time we call this route.
 - This file should have access to the beers we get as a response from the database. Remember, you should call the `render` method after getting the _beers_ array. _Hint:_ That means inside of the function you're passing to the `then` method. :wink:
-- On the `beers.hbs` view, loop over the **array of beers** using an `{{#each}}` loop. Display an **image**, **name**, **description** and **tagline**.
+- In the `Beers.jsx` view, loop over the **array of beers** coming via the `props` argument using an `.map` loop. Display an **image**, **name**, **description** and **tagline**.
 
 Now, when you click on the `Beers` link on the top navigation or on the `Check the beers` button, you should be able to see all the beers. Boom! :boom:
+
+- Remember to wrap all the content that `Beers` view is displaying in a `<Layout></Layout>` component.
+
+
 
 ### Iteration 4 - Random beer _page_
 
@@ -111,7 +202,12 @@ As in the previous step, we will have to focus on creating a route to display a 
 #### 4.1 The `/random-beer` route
 
 - Let's create the `/random-beer` route.
-- Inside the route, you should call the PunkAPI `getRandom()` method. It returns a promise that will resolve with a different beer object on every call. Look at the [documentation](https://www.npmjs.com/package/punkapi-javascript-wrapper#getrandom) to understand the structure of the data that you're supposed to get back. :+1:
+
+- Inside the route, you should call the PunkAPI `getRandom()` method. It returns a promise that will resolve with a different beer object on every call. 
+
+  Look at the [documentation](https://www.npmjs.com/package/punkapi-javascript-wrapper#getrandom) to understand the structure of the data that you're supposed to get back. :+1:
+
+
 
 The example of how this method works is shown below:
 
@@ -124,11 +220,17 @@ punkAPI
   .catch(error => console.log(error));
 ```
 
-- Eventually, the received beer needs to be passed to the `random-beer.hbs` file. You still don't have this file, so let's proceed to create it.
 
-#### 4.2 The `random-beer.hbs` view
 
-- The `random-beer.hbs` should display the random beer that was retrieved from the database. You should display an **image**, **name**, **description**, **tagline**, **food pairing** and **brewer tips**. The following image shows how this page could look like if you give it a bit of style. However, the styling will come later, so, for now, focus on rendering all the information:
+- Eventually, the received beer needs to be passed to the `RandomBeer.jsx` view. You still don't have this file, so let's proceed to create it.
+
+  
+
+#### 4.2 The `RandomBeer.jsx` view
+
+- The `RandomBeer.jsx` should display the random beer that was retrieved from the database. 
+
+  You should display an **image**, **name**, **description**, **tagline**, **food pairing** and **brewer tips**. The following image shows how this page could look like if you give it a bit of style. However, the styling will come later, so, for now, focus on rendering the view with all of the information about the beer:
 
 ![image](https://user-images.githubusercontent.com/23629340/36724536-c5924892-1bb3-11e8-8f22-fd1f8ce316af.png)
 
@@ -138,13 +240,13 @@ Now, every time the user clicks on the _Random beer_ link in the navbar or on th
 
 Let's proceed to the bonus iterations.
 
-:::info
-On every iteration, you should render a `partial` passing the information regarding the corresponding beer.
-:::
 
-### Bonus: Iteration 5 - Beer partial
 
-**Partials represent templates that are likely to be reused.**
+
+
+### Bonus: Iteration 5 - BeerCard component
+
+**Components represent smaller parts of the views that are likely to be reused.**
 
 Let's see what beer properties we display on the `/beers` _(the beers page)_ and compare them with the properties we displayed on the `/random-beer` _(random beer)_ page:
 
@@ -159,37 +261,126 @@ Let's see what beer properties we display on the `/beers` _(the beers page)_ and
 
 As we can see, we have 4 in common properties, which means our code could be a bit more **DRY** if we refactor it using _partials_.
 
-You should create a partial to show each beer.
 
-- First, we need to register where our `partials` will be located. So you need to add the following code to the `app.js` file:
+
+#### 5.1 Create the `BeerCard` component
+
+You should create a smaller component and use it to show each beer.
+
+- First, let's go over where our component files should be located. We recommend that you store this smaller components inside a separate folder.
+
+- You should create a `components` folder inside the `views` folder, and `BeerCard.jsx` file inside the `components` folder. 
+
+- Our `BeerCard.jsx` should always display the properties that both views share: **image**, **name**, **description**, and **tagline** of the beer. 
+
+  
+
+#### 5.2 Display the `BeerCard` in the `RandomBeer` view
+
+- Now, you should go ahead and use this component (  `<BeerCard />`  )  inside of the `RandomBeer.jsx`.
+
+- You should replace the HTML in the ``RandomBeer.jsx` page and instead use the `<BeerCard/>`, like this:
+
+  
+
+  ```jsx
+  function RandomBeer( props ) {
+    return(
+      <Layout>
+        <BeerCard beer={props.oneBeer} />
+        
+       {/* `props.oneBeer` is the data coming from the res.render('RandomBeer') */}
+      </Layout>
+    )
+  }
+  ```
+
+- Remember to `require` the `BeerCard` component in the `RandomBeer.jsx` file.
+
+  
+
+
+
+#### 5.3 Display the `BeerCard` in the `Beers` view
+
+- You should go ahead and use the  `<BeerCard />`  component inside the `map` of the `Beers.jsx` .
+- The `<BeerCard />` used in the `Beers.jsx` **should not display** the **food pairing** nor **brewers tips**. You can pass an additional boolean value prop to the `<BeerCard />` and use it to hide the **food pairing** and **brewers tips**, when rendering it in the `Beers.jsx` view, like so:
+
+##### `Beers.jsx`
 
 ```jsx
-hbs.registerPartials(path.join(__dirname, 'views/partials'));
+        {
+          props.beersFromApi.map( (beerObj) => {
+          	  return <BeerCard beer={beerObj} hideDetails={true} />;
+        	})
+        }
 ```
 
-- Next, you should create a `partials` folder inside the `views`, and `beerpartial.hbs` file inside the `partials` folder (**Note**: We're not including dashes in the `hbs` partial names, since handlebars partials need to follow the same naming conventions as JavaScript variables).
-- Our `beerpartial.hbs` will display the properties that both views share: **image**, **name**, **description**, and **tagline** of the beer.
-- Now, you can go ahead and plug in this partial in the `beers.hbs` view inside the `each` loop.
 
-After creating the partial, and looping over the array of beers, on our `/beers` route, we should have the following:
+
+After this you should implement a conditional using a [ternary operator](https://flaviocopes.com/javascript-ternary-operator/), to hide the additional details when `props.hideDetails` is `true`. You can use the below example as a guide on how to do it: 
+
+##### `BeerCard.jsx`
+
+```jsx
+{
+    props.hideDetails 
+        ?  null
+  	    :  ( <div>  {/*  Food Pairing and Brewers Tips go here */}  </div> )
+}  
+```
+
+- The above ternary condition will hide the `div` with **food pairing** and **brewers tips** when the  *prop* `hideDetails={true}` is passed to the `BeerCard` in the `Beers.jsx`  view.
+
+  
+
+
+
+
+
+- After implementing the ternary conditional, and using the `BeerCard`  in the `map` of the `Beers.jsx`, making a browser request to the `/beers` route should return the following:
 
 ![image](https://user-images.githubusercontent.com/23629340/36724392-61fa7336-1bb3-11e8-8468-189908167e10.png)
 
-- Also, you can use it in the `random-beers.hbs` page.
 
-Our code shrunk by a lot just because we managed to create a reusable piece of code (the partial), which we can now place wherever we need to use this set of properties.
+
+
+
+Our code shrunk by a lot just because we managed to create a reusable piece of code (the component).
+
+
 
 ### Bonus: Iteration 6
 
-Make all the beers on the beers page clickable. If users click on a specific beer, they should be able to see a page with the detailed information of that particular beer. **You can reuse the same partial you used for iteration 5**. As a matter of fact, you should. That's what partials are for. The trick is to wrap an anchor tag around every beer that has the beer `id` in the `href` property. Something like:
+Make all the beers on the `/beers` page clickable. If users click on a specific beer, they should be able to see a page with the detailed information of that particular beer. 
 
-```html
-<a href="/beers/beer-i3f4d34s34b"><!-- name of the beer --></a>
+The trick is to wrap an anchor tag around every beer, and make sure that the URL has the beer's `id` in the `href` property. Something like:
+
+```jsx
+<a href="/beers/137">
+  {/* Beer details  */}
+</a>
 ```
+
+
 
 To understand how you can get the `id` from the URL, read this section of the [Express docs](http://expressjs.com/en/4x/api.html#req.params).
 
 To find out how you can get an individual beer from the punkAPI using the _beerId_, check out the [`.getBeer(id)` method on the punkAPI docs](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeerid).
+
+
+
+
+
+**You should create the new a new route in `app.js`  to handle the  requests coming from clicking on the beer (wrapped in the anchor)** . 
+
+This new route shoud render a view displaying the specific beer got using the [`.getBeer( id )`  punkAPI method](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeerid).
+
+
+
+
+
+
 
 ### Bonus: Iteration 7
 
