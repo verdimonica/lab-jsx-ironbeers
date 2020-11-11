@@ -103,9 +103,9 @@ Make sure to edit the `href` of each anchor in the following way:
 
 Layout done, let's move to creating these three pages.
 
-### Iteration 2 - Home _page_
+### Iteration 2 - Home _view_
 
-- The first page should be **Home** and should be rendered on **`/`** route. The file that gets rendered is `Home.jsx`.
+- The first view should be **Home** and should be rendered on **`/`** route. The file that gets rendered is `Home.jsx`.
 
 - The HTML of the `Home.jsx` view should be wrapped in the `<Layout></Layout>` component, like so:
 
@@ -128,9 +128,9 @@ Layout done, let's move to creating these three pages.
 
 ![image](https://user-images.githubusercontent.com/23629340/36723774-7d791ef2-1bb1-11e8-991b-39dbf4fd8a59.png)
 
-### Iteration 3 - Beers _page_
+### Iteration 3 - Beers _view_
 
-The next thing we will be working on is a page where we can present all the beers we will retrieve from the remote database. This page will be rendered every time the user visits the the `/beers` route.
+The next thing we will be working on is a view where we can present all the beers we will retrieve from the punkApi. This view will be rendered every time the user visits the the `/beers` route.
 
 This leads us to the conclusion that in this step, we have the two main focus areas:
 
@@ -146,7 +146,7 @@ In this step, we will have a couple of micro-steps:
 
 - Inside the `/beers` route, call the `getBeers()` method (the **PunkAPI** provides this method, and you can find more about it [here](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeersoptions)).
 
-  **Calling the `.getBeers()` method creates a GET request to the beers API (similar to using `fetch()`). This will return a Promise with the response from the API that should be resolved with an array of 25 beers.**
+  **Calling the `.getBeers()` makes a request to the punkAPI (similar to using `fetch()`). This will return a Promise with the response from the API that should be resolved with an array of 25 beers.**
 
 - You should pass that array to the `Beers` view in the `res.render` and then use it inside of `Beers.jsx` as `props`.
 
@@ -173,7 +173,7 @@ Now, when you click on the `Beers` link on the top navigation or on the `Check t
 
 - Remember to wrap all the content that `Beers` view is displaying in a `<Layout></Layout>` component.
 
-### Iteration 4 - Random beer _page_
+### Iteration 4 - Random beer _view_
 
 As in the previous step, we will have to focus on creating a route to display a random beer. When a random beer is retrieved, we have to pass it to the view.
 
