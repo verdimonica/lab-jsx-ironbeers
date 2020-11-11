@@ -400,6 +400,8 @@ After this you should implement a conditional using a [ternary operator](https:/
 
 - The above ternary condition will hide the `div` with **food pairing** and **brewers tips** when the _prop_ `hideDetails={true}` is passed to the `BeerCard` in the `Beers.jsx` view.
 
+<br>
+
 - After implementing the ternary conditional, and using the `BeerCard` in the `map` of the `Beers.jsx`, making a browser request to the `/beers` route should return the following:
 
 ![image](https://user-images.githubusercontent.com/23629340/36724392-61fa7336-1bb3-11e8-8468-189908167e10.png)
@@ -415,13 +417,22 @@ Make all the beers on the `/beers` page clickable. If users click on a specific 
 
 The trick is to wrap an anchor tag around every beer, and make sure that the URL has the beer's `id` in the `href` property. Something like:
 
+<br>
+
+
 ```jsx
 <a href="/beers/137">{/* Beer details  */}</a>
 ```
 
+<br>
+
+
 To understand how you can get the `id` from the URL, read this section of the [Express docs](http://expressjs.com/en/4x/api.html#req.params).
 
 To find out how you can get an individual beer from the punkAPI using the _beerId_, check out the [`.getBeer(id)` method on the punkAPI docs](https://www.npmjs.com/package/punkapi-javascript-wrapper#getbeerid).
+
+<br>
+
 
 **You should create the new a new route in `app.js` to handle the requests coming from clicking on the beer (wrapped in the anchor)** .
 
